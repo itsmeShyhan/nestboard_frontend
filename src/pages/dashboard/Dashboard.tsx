@@ -1,11 +1,11 @@
-import { useUser } from "@clerk/react"
+// import { useUser } from "@clerk/react"
 import UserDescription from "./Components/UserDescription"
 import UserDetails from "./Components/UserDetails"
 // import { FileExclamationPoint } from "lucide-react"
 
 export function Dashboard() {
   // const { user, isLoaded, isSignedIn } = useUser()
-  const { user } = useUser()
+  // const { user } = useUser()
 
   // if (!isLoaded) {
   //   return (

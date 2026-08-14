@@ -148,17 +148,17 @@ export const properties: Property[] = [
 ]
 
 
-export const dummyProperties = [
+export const dummyProperties: Property[] = [
    {
-            id: "prop-001",
-            roomId: "prop-001-A",
-            seatNumber: 3,
-            leaseStart: "10-05-26",
-            leaseEnd: "10-09-26",
-            totalAmount: 1000,
-            paymentStatus: "PAID",
-            bookingStatus: "CONFIRMED",
-            createdAt: "10 pm",
-            stripeSessioniId: "AB14D"
+             id: "prop-012",
+    title: "Emerald Villa",
+    location: "Kotte, Sri Lanka",
+    type: "Villa",
+    price: "32K",
+    rating: 4.4,
+    image:
+      "https://images.unsplash.com/photo-1504615755583-2916b52192a3?w=400&h=500&fit=crop",
+    lat: 6.8967,
+    lng: 80.7758
         }
 ]

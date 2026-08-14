@@ -6,9 +6,11 @@ import StatsCard from './StatsCard'
 const UserPreferences = () => {
   return (
    <>
-   <StatsCard />
+   {/* <StatsCard />
    <SettingsCard />
-   <HelpCard />
+   <HelpCard /> */}
+
+   <div></div>
    </>
   )
 }

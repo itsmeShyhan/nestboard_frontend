@@ -5,8 +5,12 @@ import FavoritesInfo from './FavoritesInfo'
 const UserPortfolio = () => {
   return (
     <>
-    <BookingInfo />
+    <div className='w-[70dvw]'>
+
+      <BookingInfo />
     <FavoritesInfo />
+    </div>
+    
     </>
 
   ) 

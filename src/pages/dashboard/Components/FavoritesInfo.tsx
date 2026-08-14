@@ -2,7 +2,7 @@ import React from 'react'
 
 const FavoritesInfo = () => {
   return (
-    <div>FavoritesInfo</div>
+    <div></div>
   )
 }
 
