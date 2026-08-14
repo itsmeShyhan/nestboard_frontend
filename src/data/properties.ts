@@ -146,3 +146,19 @@ export const properties: Property[] = [
     lng: 80.7758,
   },
 ]
+
+
+export const dummyProperties = [
+   {
+            id: "prop-001",
+            roomId: "prop-001-A",
+            seatNumber: 3,
+            leaseStart: "10-05-26",
+            leaseEnd: "10-09-26",
+            totalAmount: 1000,
+            paymentStatus: "PAID",
+            bookingStatus: "CONFIRMED",
+            createdAt: "10 pm",
+            stripeSessioniId: "AB14D"
+        }
+]
