@@ -1,4 +1,6 @@
 import { useUser } from "@clerk/react"
+import UserDescription from "./Components/UserDescription"
+import UserDetails from "./Components/UserDetails"
 // import { FileExclamationPoint } from "lucide-react"
 
 export function Dashboard() {
@@ -25,17 +27,26 @@ export function Dashboard() {
   // }
 
   return (
-    <div className="min-h-screen bg-gray-50 px-6 pt-28">
-      <div className="mx-auto max-w-3xl">
-        <h1 className="text-3xl font-semibold text-gray-900">
-          Welcome, {user?.firstName || "User"}!
-        </h1>
-        <p className="mt-2 text-gray-600">
-          This is your dashboard where you can manage your properties, view your
-          saved listings, and see your recent activity. We're working on adding
-          more features soon, so stay tuned!
-        </p>
-      </div>
+    // <div className="min-h-screen bg-gray-50 px-6 pt-28">
+    //   <div className="mx-auto max-w-3xl">
+    //     <h1 className="text-3xl font-semibold text-gray-900">
+    //       Welcome, {user?.firstName || "User"}!
+    //     </h1>
+    //     <p className="mt-2 text-gray-600">
+    //       This is your dashboard where you can manage your properties, view your
+    //       saved listings, and see your recent activity. We're working on adding
+    //       more features soon, so stay tuned!
+    //     </p>
+    //   </div>
+    // </div>
+
+    <>
+    <div className="pt-20 text-center">
+      <UserDescription />
+      <UserDetails />
     </div>
+    
+    
+    </>
   )
 }
