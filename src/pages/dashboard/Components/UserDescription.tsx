@@ -10,7 +10,7 @@ const UserDescription = () => {
       
       <div className='flex flex-row justify-around'>
 
-        <div className='flex flex-row gap-10'>
+        <div className='flex gap-10'>
 
             {/* Photo */}
           <div >
