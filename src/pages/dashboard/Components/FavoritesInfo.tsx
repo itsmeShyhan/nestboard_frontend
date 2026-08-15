@@ -17,7 +17,7 @@ const FavoritesInfo = () => {
     
   return (
     <>
-    <Card className='p-10'>
+    <Card className='p-10 mb-10 ml-5'>
         {/* Header */}
         <div className='flex flex-row justify-between'>
             <div className='flex flex-row gap-2'>

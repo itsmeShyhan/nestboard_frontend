@@ -17,7 +17,7 @@ const BookingInfo = () => {
     
   return (
     <>
-    <Card className='p-10'>
+    <Card className='p-10 h-100 mb-10 ml-5'>
         {/* Header */}
         <div className='flex flex-row justify-between'>
             <div className='flex flex-row gap-2'>
@@ -29,12 +29,16 @@ const BookingInfo = () => {
             </Badge>
         </div>
 
-        {/* Properties */}
+        <div className='overflow-auto h-300'>
+            {/* Properties */}
             {dummyProperties.map((property) =>{
                 return(
                     <BookingCard {...property} />
                 )
             })}
+
+        </div>
+        
     </Card>
     </>
   )

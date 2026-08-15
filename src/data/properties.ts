@@ -160,5 +160,18 @@ export const dummyProperties: Property[] = [
       "https://images.unsplash.com/photo-1504615755583-2916b52192a3?w=400&h=500&fit=crop",
     lat: 6.8967,
     lng: 80.7758
+        },
+        
+         {
+             id: "prop-012",
+    title: "Emerald Villa",
+    location: "Kotte, Sri Lanka",
+    type: "Villa",
+    price: "32K",
+    rating: 4.4,
+    image:
+      "https://images.unsplash.com/photo-1504615755583-2916b52192a3?w=400&h=500&fit=crop",
+    lat: 6.8967,
+    lng: 80.7758
         }
 ]
