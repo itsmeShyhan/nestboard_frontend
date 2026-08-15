@@ -3,7 +3,7 @@ import { Card } from '@/components/ui/card'
 import { dummyProperties } from '@/data/properties'
 // import type { Property } from '@/types/property'
 // import { useProperties } from '@/hooks/useProperties'
-import { Heart } from 'lucide-react'
+import { ArrowRight, Heart } from 'lucide-react'
 import FavoritesCard from './Common/FavoritesCard'
 // import BookingCard from './Common/BookingCard'
 
@@ -31,10 +31,13 @@ const FavoritesInfo = () => {
 
         {/* Properties */}
             {dummyProperties.map((property) =>{
+
                 return(
                     <FavoritesCard {...property} />
                 )
             })}
+
+            <button className='flex flex-row font-bold text-primary justify-center cursor-pointer'>View All Favorites <ArrowRight></ArrowRight> </button>
     </Card>
     </>
   )
