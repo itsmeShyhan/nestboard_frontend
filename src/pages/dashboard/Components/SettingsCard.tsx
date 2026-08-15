@@ -17,7 +17,7 @@ const SettingsCard = () => {
           <p className='relative font-bold'>Edit Profile</p>
         </button>
 
-        <button className='flex flex-row p-5 text-sm gap-3 cursor-pointer'>
+        <button className='flex flex-row p-5 text-sm gap-3 cursor-pointer text-red-500'>
           <LogOut></LogOut>
           <p className='relative font-bold'>Logout</p>
         </button>
