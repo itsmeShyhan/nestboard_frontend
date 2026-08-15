@@ -2,7 +2,7 @@ import { Card } from '@/components/ui/card'
 
 const StatsCard = () => {
   return (
-    <Card className='w-[25dvw]'>
+    <Card className='w-[25dvw] shadow-xl'>
       <h1 className='font-bold text-lg text-left pl-5'>Quick Stats</h1>
 
       <div className='flex flex-col'>

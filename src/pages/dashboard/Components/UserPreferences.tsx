@@ -1,5 +1,6 @@
 // import HelpCard from './HelpCard'
 // import SettingsCard from './SettingsCard'
+import SettingsCard from './SettingsCard'
 import StatsCard from './StatsCard'
 
 const UserPreferences = () => {
@@ -9,9 +10,11 @@ const UserPreferences = () => {
    <SettingsCard />
    <HelpCard /> */}
 
-   <StatsCard />
-
-   <div></div>
+   <div className='flex flex-col gap-6'>
+    <StatsCard />
+    <SettingsCard />
+   </div>
+   
    </>
   )
 }
