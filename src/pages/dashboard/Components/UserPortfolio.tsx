@@ -1,4 +1,3 @@
-import React from 'react'
 import BookingInfo from './BookingInfo'
 import FavoritesInfo from './FavoritesInfo'
 
@@ -8,7 +7,7 @@ const UserPortfolio = () => {
     <div className='w-[70dvw]'>
 
       <BookingInfo />
-    <FavoritesInfo />
+      <FavoritesInfo />
     </div>
     
     </>

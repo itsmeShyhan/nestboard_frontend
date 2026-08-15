@@ -18,7 +18,7 @@ const BookingCard = (property: Property) => {
       <div className='flex flex-col gap-7'>
 
         {/* Property Name */}
-        <h1 className='font-bold'>Green Villa Colombo</h1>
+        <h1 className='font-bold'>Sunset Apartment</h1>
 
         {/* Room Number */}
         <caption className='font-light text-left'>Room A</caption>
