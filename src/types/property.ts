@@ -9,13 +9,14 @@ export type Property = {
   lat: number
   lng: number
 }
-export type Room = {
+export type RoomType = {
   id: string
   name: string
   price: string
   seatsTotal: number
   seatsFree: number
   hasAC: boolean
+  rooms: Room[]
 }
 
 export type PropertyDetail = {
@@ -28,5 +29,12 @@ export type PropertyDetail = {
   minStay: string
   startingPrice: string
   image: string
-  rooms: Room[]
+  roomTypes: RoomType[]
+}
+
+
+export type Room = {
+  id: string
+  label: string
+  isAvailable: boolean
 }

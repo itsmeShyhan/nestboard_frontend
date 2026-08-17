@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import type { Room } from "@/types/property"
+import type { RoomType } from "@/types/property"
 
 export function RoomCard({
   name,
@@ -10,7 +10,7 @@ export function RoomCard({
   seatsTotal,
   seatsFree,
   hasAC,
-}: Room) {
+}: RoomType) {
   const fillPercentage = Math.round(
     ((seatsTotal - seatsFree) / seatsTotal) * 100
   )
