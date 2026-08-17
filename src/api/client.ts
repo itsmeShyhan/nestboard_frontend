@@ -31,6 +31,8 @@ export async function apiFetch<T>(path: string, options: ApiOptions = {}){
         headers
     })
 
+    console.log(`${API_URL}${path}`)
+    
     if (!res.ok) throw new Error(`API request failed: ${res.status}`)
     if (res.status === 204) return undefined as T
     return res.json() as Promise<T>
