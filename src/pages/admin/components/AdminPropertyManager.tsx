@@ -15,6 +15,8 @@ const AdminPropertyManager = () => {
         queryFn: fetchProperties
     })
 
+    
+
     const [form, setForm] = useState({
         title: "",
         description: "",
