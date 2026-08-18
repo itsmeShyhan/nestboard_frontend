@@ -1,6 +1,6 @@
 import { Heart, Building2, MessageCircle } from "lucide-react"
 import { NavLink } from "react-router"
-import { UserButton, useUser } from "@clerk/react"
+import { useAuth } from "../auth/AuthProvider"
 
 export type NavbarLink = {
   label: string
@@ -12,8 +12,8 @@ type NavbarProps = {
 }
 
 export function Navbar({ links }: NavbarProps) {
-  const { isSignedIn, user } = useUser()
-  const isAdmin = user?.publicMetadata?.role === "admin"
+  const { isSignedIn, user, logout} = useAuth()
+  const isAdmin = user?.role === "ADMIN"
   return (
     <div className="absolute top-0 right-0 left-0 z-50 px-4 pt-4">
       <nav
@@ -82,14 +82,12 @@ export function Navbar({ links }: NavbarProps) {
               Sign in
             </NavLink>
           ) : (
-            <UserButton
-              afterSwitchSessionUrl="/sign-in"
-              appearance={{
-                elements: {
-                  avatarBox: "h-9 w-9",
-                },
-              }}
-            />
+            <button onClick={logout} className="flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-sm text-white">
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-semibold">
+                {user?.displayName?.[0]?.toUpperCase() ?? "?"}
+              </span>
+
+            </button>
           )}
         </div>
       </nav>

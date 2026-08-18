@@ -1,15 +1,13 @@
-import { useAuth } from "@clerk/react"
 import { Navigate } from "react-router"
 import type { ReactNode } from "react"
+import { useAuth } from "./AuthProvider"
 
-type ProtectedRouteProps = {
-  children: ReactNode
-}
 
-export function ProtectedRoute({ children }: ProtectedRouteProps) {
-  const { isLoaded, isSignedIn } = useAuth()
 
-  if (!isLoaded) {
+export function ProtectedRoute({ children }: {children: ReactNode}) {
+  const { isLoading, isSignedIn } = useAuth()
+
+  if (isLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <p className="text-gray-500">Loading...</p>

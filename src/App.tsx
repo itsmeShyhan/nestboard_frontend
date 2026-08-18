@@ -10,6 +10,7 @@ import { ProtectedRoute } from "./components/auth/ProtectedRoute"
 import { AdminDashboard } from "./pages/admin/AdminDashboard"
 import { AdminProtectedRoute } from "./components/auth/AdminProtectedRoute"
 import { AdminThemeApplier } from "./components/auth/AdminThemeApplier"
+import { SignUp } from "./pages/Auth/SignUp"
 
 const navLinks: NavbarLink[] = [
   { label: "Explore", to: "/" },
@@ -53,6 +54,7 @@ export function App() {
             />
           </Route>
           <Route path="/sign-in/*" element={<SignIn />} />
+          <Route path="/sign-up/*" element={<SignUp />} />
         </Routes>
         <ReactQueryDevtools initialIsOpen={false} />
       </AdminThemeApplier>

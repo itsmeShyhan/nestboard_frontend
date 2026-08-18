@@ -1,22 +1,20 @@
-import { useUser } from "@clerk/react"
 import { type ReactNode, useEffect } from "react"
+import { useAuth } from "./AuthProvider"
 
 const ADMIN_CLASS = "admin-theme"
 
-type AdminThemeApplierProps = {
-  children: ReactNode
-}
 
-export function AdminThemeApplier({ children }: AdminThemeApplierProps) {
-  const { user, isLoaded } = useUser()
+
+export function AdminThemeApplier({ children }: {children: ReactNode}) {
+  const { user, isLoading } = useAuth()
 
   useEffect(() => {
-    if (!isLoaded) return
+    if (isLoading) return
 
-    const role = (user?.publicMetadata as { role?: string } | undefined)?.role
+    const role = (user as { role?: string } | undefined)?.role
     const root = document.documentElement
 
-    if (role === "admin") {
+    if (role === "ADMIN") {
       root.classList.add(ADMIN_CLASS)
     } else {
       root.classList.remove(ADMIN_CLASS)
@@ -25,7 +23,7 @@ export function AdminThemeApplier({ children }: AdminThemeApplierProps) {
     return () => {
       root.classList.remove(ADMIN_CLASS)
     }
-  }, [user, isLoaded])
+  }, [user, isLoading])
 
   return <>{children}</>
 }
