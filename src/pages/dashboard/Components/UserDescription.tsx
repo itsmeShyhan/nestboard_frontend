@@ -1,9 +1,12 @@
+
+import { useAuth } from '@/components/auth/AuthProvider'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
+
 import { Calendar, Mail, MapPin, Phone, SquarePen } from 'lucide-react'
-import React from 'react'
 
 const UserDescription = () => {
+  const {user} = useAuth()
   return (
     <>
     <Card className='m-5 shadow-lg'>
@@ -19,14 +22,14 @@ const UserDescription = () => {
 
           {/* Profile Details */}
           <div className='flex flex-col gap-4' >
-            <h1 className='text-3xl font-bold text-left'>Arnold</h1>
+            <h1 className='text-3xl font-bold text-left'>{user?.displayName}</h1>
 
             <caption className='text-left font-light'>Digital nomad and software engineer looking for comfortable co-living spaces</caption>
             
             <div className='flex flex-row gap-8 font-light'>  
               <div className='flex flex row gap-2'> 
                 <Mail strokeWidth={1}></Mail>
-                <span className='relative top-0.5'>Arnold.doe@example.com</span>
+                <span className='relative top-0.5'>{user?.email}</span>
               </div>
               
               <div className='flex flex row gap-2'> 

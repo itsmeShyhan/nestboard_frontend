@@ -4,10 +4,12 @@ import { dummyProperties } from '@/data/properties'
 // import { useProperties } from '@/hooks/useProperties'
 import { House } from 'lucide-react'
 import BookingCard from './Common/BookingCard'
+import { useProperties } from '@/hooks/useProperties'
 // import FavoritesCard from './FavoritesInfo'
 
 const BookingInfo = () => {
-    // const { data: properties = [], isLoading, isError } = useProperties()
+    const { data: properties = [], isLoading, isError } = useProperties()
+    print(properties)
 
     // console.log(properties)
     // console.log(isLoading)
