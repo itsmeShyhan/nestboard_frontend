@@ -18,7 +18,7 @@ export function SignIn() {
     setError(null)
     try{
       await login(email, password)
-      navigate("/dashboard")
+      navigate("/dashboard" )
     } catch {
       setError("Invalid email or password")
     } finally{

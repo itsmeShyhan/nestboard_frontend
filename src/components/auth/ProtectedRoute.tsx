@@ -5,7 +5,7 @@ import { useAuth } from "./AuthProvider"
 
 
 export function ProtectedRoute({ children }: {children: ReactNode}) {
-  const { isLoading, isSignedIn } = useAuth()
+  const { isLoading, isSignedIn, user } = useAuth()
 
   if (isLoading) {
     return (
@@ -17,6 +17,12 @@ export function ProtectedRoute({ children }: {children: ReactNode}) {
 
   if (!isSignedIn) {
     return <Navigate to="/sign-in" replace />
+  }
+
+  const role = user?.role as string | undefined
+
+  if (role === "ADMIN") {
+    return <Navigate to="/admin" replace />
   }
 
   return <>{children}</>
