@@ -1,11 +1,12 @@
 
 import { Button } from '@/components/ui/button'
-import type { Property } from '@/types/property'
+import type { BookingDTO } from '@/types/booking'
+// import type { Property } from '@/types/property'
 import { Calendar, MapPin } from 'lucide-react'
 
 
 
-const BookingCard = (property: Property) => {
+const BookingCard = (property: BookingDTO) => {
   console.log(property)
   return (
     <>
@@ -23,17 +24,17 @@ const BookingCard = (property: Property) => {
         <div className='flex flex-col gap-7'>
 
           {/* Property Name */}
-          <h1 className='font-bold'>Sunset Apartment</h1>
+          <h1 className='font-bold'>{property.property.title}</h1>
 
           {/* Room Number */}
-          <caption className='font-light text-left'>Room A</caption>
+          <caption className='font-light text-left'>{property.room.roomLabel}</caption>
           
           {/* location and Date */}
           <div className='flex flex-row font-light gap-3'>
 
             <div className='flex flex-row'>
               <MapPin strokeWidth={1}></MapPin>
-              <p className='relative top-0.5'>Colombo</p>
+              <p className='relative top-0.5'>{property.property.city}</p>
             </div>
 
             <div className='flex flex-row font-light'>

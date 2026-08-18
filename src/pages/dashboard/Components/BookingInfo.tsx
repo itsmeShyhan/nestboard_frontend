@@ -1,20 +1,19 @@
 import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
-import { dummyProperties } from '@/data/properties'
+// import { properties } from '@/data/properties'
 // import { useProperties } from '@/hooks/useProperties'
 import { House } from 'lucide-react'
 import BookingCard from './Common/BookingCard'
-import { useProperties } from '@/hooks/useProperties'
+// import { useProperties } from '@/hooks/useProperties'
+import { useQuery } from '@tanstack/react-query'
+import { fetchMyBookings } from '@/api/bookings'
 // import FavoritesCard from './FavoritesInfo'
 
 const BookingInfo = () => {
-    const { data: properties = [], isLoading, isError } = useProperties()
-    print(properties)
-
+    const { data: bookings, isLoading, isError} = useQuery({queryKey: ["my-bookings"], queryFn: fetchMyBookings})
     // console.log(properties)
     // console.log(isLoading)
     // console.log(isError)
-
 
     
   return (
@@ -31,9 +30,11 @@ const BookingInfo = () => {
             </Badge>
         </div>
 
+
         <div className='overflow-auto h-300'>
             {/* Properties */}
-            {dummyProperties.map((property) =>{
+            {bookings?.map((property, i) =>{
+                console.log(i)
                 return(
                     <BookingCard {...property} />
                 )
