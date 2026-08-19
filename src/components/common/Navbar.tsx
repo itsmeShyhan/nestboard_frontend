@@ -1,4 +1,4 @@
-import { Heart, Building2, MessageCircle } from "lucide-react"
+import { Building2 } from "lucide-react"
 import { NavLink } from "react-router"
 import { useAuth } from "../auth/AuthProvider"
 
@@ -57,7 +57,7 @@ export function Navbar({ links }: NavbarProps) {
           </div>
 
           {/* Right section */}
-          <div className="flex items-center gap-3.5">
+          {/* <div className="flex items-center gap-3.5">
           <button className="rounded-full p-2 transition-colors hover:bg-white/10">
             <Heart className="h-5 w-5 text-white/70 hover:text-white" />
           </button>
@@ -67,7 +67,7 @@ export function Navbar({ links }: NavbarProps) {
           </button>
 
          
-        </div>
+          </div> */}
         </>
         )}
 

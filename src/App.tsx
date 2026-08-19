@@ -11,11 +11,13 @@ import { AdminDashboard } from "./pages/admin/AdminDashboard"
 import { AdminProtectedRoute } from "./components/auth/AdminProtectedRoute"
 import { AdminThemeApplier } from "./components/auth/AdminThemeApplier"
 import { SignUp } from "./pages/Auth/SignUp"
+import Favorites from "./pages/favorites/favorites"
 
 const navLinks: NavbarLink[] = [
   { label: "Explore", to: "/" },
   { label: "Map View", to: "/map" },
   { label: "Dashboard", to: "/dashboard" },
+  { label: "Favorites", to: "/favorites"}
 ]
 
 function AppLayout() {
@@ -36,6 +38,7 @@ export function App() {
             <Route path="/" element={<Home />} />
             <Route path="/property-details/:id" element={<PropertyDetails />} />
             <Route path="/map" element={<MapRoute />} />
+            <Route path="/favorites" element={<Favorites />} />
             <Route
               path="/dashboard"
               element={
