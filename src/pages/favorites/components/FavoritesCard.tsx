@@ -55,7 +55,7 @@ const FavoritesCard = (property: Property) => {
 
               {/* Pricing Per Moth */}
           <div className='flex flex-row font-light gap-3'>
-            <p className='text-primary font-extrabold'>LKR 20,000-30,000  </p>
+            <p className='text-primary font-extrabold'> LKR {property.price}</p>
             <p>/month</p>
           </div>
         </div>        

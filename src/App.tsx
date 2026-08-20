@@ -38,7 +38,11 @@ export function App() {
             <Route path="/" element={<Home />} />
             <Route path="/property-details/:id" element={<PropertyDetails />} />
             <Route path="/map" element={<MapRoute />} />
-            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/favorites" element={
+              <ProtectedRoute>
+                <Favorites />
+              </ProtectedRoute>
+              } />
             <Route
               path="/dashboard"
               element={
