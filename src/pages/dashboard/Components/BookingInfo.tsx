@@ -10,7 +10,7 @@ import { fetchMyBookings } from '@/api/bookings'
 // import FavoritesCard from './FavoritesInfo'
 
 const BookingInfo = () => {
-    const { data: bookings, isLoading, isError} = useQuery({queryKey: ["my-bookings"], queryFn: fetchMyBookings})
+    const { data: bookings} = useQuery({queryKey: ["my-bookings"], queryFn: fetchMyBookings})
     // console.log(properties)
     // console.log(isLoading)
     // console.log(isError)

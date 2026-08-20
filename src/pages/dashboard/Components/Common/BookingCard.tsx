@@ -7,7 +7,7 @@ import { Calendar, MapPin } from 'lucide-react'
 
 
 const BookingCard = (property: BookingDTO) => {
-  console.log(property)
+  console.log(property.room.roomType.property.title)
   return (
     <>
     <div className='flex flex-row  p-8 shadow-xl justify-between'>
@@ -24,7 +24,7 @@ const BookingCard = (property: BookingDTO) => {
         <div className='flex flex-col gap-7'>
 
           {/* Property Name */}
-          <h1 className='font-bold'>{property.property.title}</h1>
+          <h1 className='font-bold'>{property.room.roomType.property.title}</h1>
 
           {/* Room Number */}
           <caption className='font-light text-left'>{property.room.roomLabel}</caption>
@@ -34,7 +34,7 @@ const BookingCard = (property: BookingDTO) => {
 
             <div className='flex flex-row'>
               <MapPin strokeWidth={1}></MapPin>
-              <p className='relative top-0.5'>{property.property.city}</p>
+              <p className='relative top-0.5'>{property.room.roomType.property.city}</p>
             </div>
 
             <div className='flex flex-row font-light'>
