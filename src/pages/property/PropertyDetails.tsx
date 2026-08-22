@@ -1,7 +1,7 @@
 import { useParams } from "react-router"
 import { PropertySection } from "./components/PropertySection"
 import { PropertyInfo } from "./components/PropertyInfo"
-import { RoomList } from "./components/RoomList"
+import { RoomTypeList } from "./components/RoomTypeList"
 import { usePropertyDetail } from "@/hooks/usePropertyDetail"
 
 export function PropertyDetails() {
@@ -47,7 +47,7 @@ export function PropertyDetails() {
         </div>
 
         <div className="mt-5">
-          <RoomList rooms={property.roomTypes} />
+          <RoomTypeList rooms={property.roomTypes} />
         </div>
       </div>
     </div>

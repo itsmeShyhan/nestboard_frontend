@@ -1,12 +1,12 @@
 import { Card } from "@/components/ui/card"
-import { RoomCard } from "./RoomCard"
+import { RoomTypeCard } from "./RoomTypeCard"
 import type { RoomType } from "@/types/property"
 
 type RoomTypeListProps = {
   rooms: RoomType[]
 }
 
-export function RoomList({ rooms }: RoomTypeListProps) {
+export function RoomTypeList({ rooms }: RoomTypeListProps) {
   console.log(rooms)
   return (
     <Card className="gap-0 rounded-3xl p-6 shadow-sm ring-0">
@@ -15,7 +15,7 @@ export function RoomList({ rooms }: RoomTypeListProps) {
       </h2>
       <div className="flex flex-col gap-4">
         {rooms.map((room) => (
-          <RoomCard key={room.id} {...room} />
+          <RoomTypeCard key={room.id} {...room} />
         ))}
       </div>
     </Card>

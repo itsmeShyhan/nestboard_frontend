@@ -8,7 +8,7 @@ import { useState } from "react"
 import { createBooking } from "@/api/bookings"
 import { useNavigate, useParams } from "react-router"
 
-export function RoomCard({
+export function RoomTypeCard({
   id,
   name,
   price,
@@ -28,7 +28,7 @@ export function RoomCard({
     navigate(`/property-details/${propertyId}/room-types/${id}`)
   }
 
-  const { mutate: book, isPending} = useMutation({
+  const { isPending} = useMutation({
     mutationFn: () => {
       const room = rooms?.find((r) => r.isAvailable)
       if (!room){
