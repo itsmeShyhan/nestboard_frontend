@@ -2,6 +2,7 @@
 import { fetchRoomType } from "@/api/properties"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { useParams } from "react-router"
+import RoomCard from "./components/RoomCard"
 
 const RoomDetails = () => {
     // Get the room id from url
@@ -9,12 +10,14 @@ const RoomDetails = () => {
     const { roomTypeId } = useParams<{ roomTypeId: string }>()
 
 
-    const {data: rooms} = useQuery({
+    const {data: roomType} = useQuery({
       queryKey: ["room-list"],
       queryFn: () => fetchRoomType(id, roomTypeId)
     })
 
-    console.log(rooms)
+    console.log(roomType)
+
+    
 
 
 
@@ -53,7 +56,15 @@ const RoomDetails = () => {
     
 
   return (
-    <div>RoomDetails</div>
+    <>
+    <div className="flex flex-col gap-20">
+    {roomType?.rooms.map((room) => {
+      return (
+          <RoomCard {...room} {...roomType} />
+      )
+    })}
+    </div>
+    </>
   )
 }
 

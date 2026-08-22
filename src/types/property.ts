@@ -33,8 +33,22 @@ export type PropertyDetail = {
 }
 
 
+// export type Room = {
+//   id: string
+//   label: string
+//   isAvailable: boolean
+// }
+
+export type Booking = {
+  seatIndex: number
+  tenant: string
+  tenantBio: string
+
+}
+
 export type Room = {
-  id: string
-  label: string
+  roomId: string
+  roomName: string
   isAvailable: boolean
+  booking: Booking[]
 }
