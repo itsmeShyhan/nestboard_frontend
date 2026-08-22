@@ -7,6 +7,7 @@ type RoomTypeListProps = {
 }
 
 export function RoomList({ rooms }: RoomTypeListProps) {
+  console.log(rooms)
   return (
     <Card className="gap-0 rounded-3xl p-6 shadow-sm ring-0">
       <h2 className="mb-5 text-xl font-bold text-gray-900">

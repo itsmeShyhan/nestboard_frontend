@@ -12,6 +12,7 @@ import { AdminProtectedRoute } from "./components/auth/AdminProtectedRoute"
 import { AdminThemeApplier } from "./components/auth/AdminThemeApplier"
 import { SignUp } from "./pages/Auth/SignUp"
 import Favorites from "./pages/favorites/favorites"
+import RoomDetails from "./pages/rooms/RoomDetails"
 
 const navLinks: NavbarLink[] = [
   { label: "Explore", to: "/" },
@@ -43,6 +44,8 @@ export function App() {
                 <Favorites />
               </ProtectedRoute>
               } />
+
+              <Route path="/property-details/:id/room-types/:roomTypeId" element={<RoomDetails />}></Route>
             <Route
               path="/dashboard"
               element={

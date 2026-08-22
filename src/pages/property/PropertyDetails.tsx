@@ -9,6 +9,8 @@ export function PropertyDetails() {
   // const property = propertyDetails.find((p) => p.id === id)
   const { data: property, isLoading, isError } = usePropertyDetail(id)
 
+  console.log(property)
+
   if (isLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
