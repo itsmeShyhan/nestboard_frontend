@@ -19,21 +19,24 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { useEffect } from "react"
+import { useState } from "react"
 import { useParams } from "react-router"
 
 const Payment = () => {
 
     // const [timer, setTimer] = useState(10)
 
-    useEffect(() => {
+    const [message, setMessage] = useState("")
 
-    }, [])
+
+    // useEffect(() => {
+
+    // }, [])
     const {bookingId} = useParams<{bookingId: string}>()
     const queryClient = useQueryClient()
     
     
-    const { mutate: confirmPayment} = useMutation({
+    const { mutate: confirmPayment, isPending, isSuccess} = useMutation({
     
       mutationFn: () => {
       
@@ -43,16 +46,21 @@ const Payment = () => {
     },
     onSuccess: (data) => {
       console.log("Paid. Check My Bookings")
+      setMessage("Booking paid and confirmed")
       console.log(data)
+      queryClient.invalidateQueries({queryKey: ["my-bookings"]})
 
 
       
-
-
-      queryClient.invalidateQueries({queryKey: ["my-bookings"]})
     },
-    onError: () => {
+    onError: (data) => {
       console.log("Booking failed.")
+
+      if (data.message.includes("409")){
+         setMessage("Booking conflict has occured, please try another seat!")
+      }else if(data.message.includes("422")){
+         setMessage("Booking not found, please try again with a valid booking.")
+      }
 
     }
   })
@@ -105,6 +113,8 @@ const years = [
                   required
                 />
               </Field>
+
+
               <Field>
                 <FieldLabel htmlFor="checkout-7j9-card-number-uw1">
                   Card Number
@@ -118,6 +128,7 @@ const years = [
                   Enter your 16-digit card number
                 </FieldDescription>
               </Field>
+
               <div className="grid grid-cols-3 gap-4">
                 <Field>
                   <FieldLabel htmlFor="checkout-exp-month-ts6">
@@ -174,23 +185,32 @@ const years = [
                   <Input id="checkout-7j9-cvv" placeholder="123" required/>
                 </Field>
               </div>
+
+
             </FieldGroup>
           </FieldSet>
           <FieldSeparator />
         
        
           <Field orientation="horizontal">
-            <Button type="button" onClick={() => confirmPayment()}>Confirm Payment</Button>
+            <Button type="button" 
+            onClick={() => confirmPayment()}
+            disabled={isPending}
+            >{isPending ? "Confirming..." : "Confirm Payment"}</Button>
             <Button variant="outline" type="button">
               Cancel
             </Button>
           </Field>
         </FieldGroup>
       </form>
+
+      <div className={isSuccess ? "text-green-500 relative top-6" :  "text-red-600 relative top-6"}>
+      {!isPending ? message : null}
+
+      </div>
     </div>
-  
 
-
+    
     </div>
   )
 }
