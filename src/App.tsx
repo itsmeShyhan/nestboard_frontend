@@ -13,6 +13,7 @@ import { AdminThemeApplier } from "./components/auth/AdminThemeApplier"
 import { SignUp } from "./pages/Auth/SignUp"
 import Favorites from "./pages/favorites/favorites"
 import RoomDetails from "./pages/rooms/RoomDetails"
+import Payment from "./pages/payment/Payment"
 
 const navLinks: NavbarLink[] = [
   { label: "Explore", to: "/" },
@@ -46,6 +47,7 @@ export function App() {
               } />
 
               <Route path="/property-details/:id/room-types/:roomTypeId" element={<RoomDetails />}></Route>
+              <Route path="/payment/:bookingId" element={<Payment />}></Route>
             <Route
               path="/dashboard"
               element={

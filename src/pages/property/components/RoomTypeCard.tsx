@@ -3,9 +3,6 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import type { RoomType } from "@/types/property"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { useState } from "react"
-import { createBooking } from "@/api/bookings"
 import { useNavigate, useParams } from "react-router"
 
 export function RoomTypeCard({
@@ -16,12 +13,11 @@ export function RoomTypeCard({
   seatsFree,
   hasAC,
   pricePerMonth,
-  rooms
 }: RoomType) {
 
   console.log(pricePerMonth)
-  const queryClient = useQueryClient()
-  const [message, setMessage] = useState<string | null>(null)
+  // const queryClient = useQueryClient()
+  // const [message, setMessage] = useState<string | null>(null)
   const navigate = useNavigate()
 
 
@@ -31,31 +27,7 @@ export function RoomTypeCard({
     navigate(`/property-details/${propertyId}/room-types/${id}`)
   }
 
-  const { isPending} = useMutation({
-    mutationFn: () => {
-      const room = rooms?.find((r) => r.isAvailable)
-      if (!room){
-        throw new Error("No available room")
-      }
 
-      console.log("done room check up")
-      
-      return createBooking({
-        roomId: room.id,
-        seatNumber: 2,
-        startMonth: "2026-08",
-        durationMonths: 3
-      })
-    },
-    onSuccess: () => {
-      console.log("Booked. Check My Bookings")
-      setMessage("Booked. Check My Bookings")
-      queryClient.invalidateQueries({queryKey: ["my-bookings"]})
-    },
-    onError: () => {
-      setMessage("Could not create booking")
-    }
-  })
 
   const fillPercentage = Math.round(
     ((seatsTotal - seatsFree) / seatsTotal) * 100
@@ -89,16 +61,14 @@ export function RoomTypeCard({
 
       <Button className="mt-4 w-full rounded-xl font-semibold cursor-pointer" 
       size="lg"
-      disabled={isPending || seatsFree === 0}
       onClick={
         // () => book()
         () => viewRoomHandler()
       }
       >
-        {isPending ? "Booking..." : "View this room"}
+        View this room
         <ArrowRight className="size-4" />
       </Button>
-      {message && <p className="mt-2 text-xs text-gray-500">{message}</p>}
     </Card>
   )
 }

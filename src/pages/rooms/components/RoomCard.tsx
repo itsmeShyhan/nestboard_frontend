@@ -7,6 +7,7 @@ import type { Room, RoomType } from "@/types/property"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { Plus } from "lucide-react"
 import { useState } from "react"
+import { useNavigate } from "react-router"
 // import BookRoom from "./BookRoom"
 
 type RoomCardProps = {
@@ -15,7 +16,8 @@ type RoomCardProps = {
 }
 
 const RoomCard = ({room, roomType}: RoomCardProps ) => {
-  // console.log(room.booking)
+
+  const navigation = useNavigate()
 
   // const [available, setAvailable] = useState("")
   const [showBookingView, setShowBookingVIew] = useState(false)
@@ -24,6 +26,8 @@ const RoomCard = ({room, roomType}: RoomCardProps ) => {
   const [duration, setDuration] = useState(3)
   const [startMonth, setStartMonth] = useState("")
   const [seatNumber, setSeatNumber] = useState(1)
+
+
 
 
   
@@ -48,8 +52,14 @@ const RoomCard = ({room, roomType}: RoomCardProps ) => {
         durationMonths: duration
       })
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
       console.log("Booked. Check My Bookings")
+
+      
+      navigation(`/payment/${data.id}`)
+
+      
+
 
       queryClient.invalidateQueries({queryKey: ["my-bookings"]})
     },
@@ -58,7 +68,6 @@ const RoomCard = ({room, roomType}: RoomCardProps ) => {
 
     }
   })
-
 
 
   return (
