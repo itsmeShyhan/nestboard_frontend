@@ -27,6 +27,7 @@ type ApiOptions = RequestInit & {
 
 
 export async function apiFetch<T>(path: string, options: ApiOptions = {}){
+    console.log("inside API Fetch")
     const headers = new Headers(options.headers);
     headers.set("Content-Type", "application/json");
 
