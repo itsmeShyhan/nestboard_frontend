@@ -1,6 +1,6 @@
 import { createBooking } from "@/api/bookings"
 import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 // import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import type { Room, RoomType } from "@/types/property"
@@ -77,18 +77,24 @@ const RoomCard = ({room, roomType}: RoomCardProps ) => {
 
     <div className="">
 
-             {/* name of room */}
+       <div>
+              {/* name of room */}
         <h1 className="text-lg font-bold mb-4">{room.roomName}</h1>
 
         <div className="flex flex-col gap-10">
 
              {/* available room seats */}
             <div className="flex flex-row gap-12 h-lg">
-                {room.booking.map(() => {
-
+                {room.booking.map((seat) => {
+                  if (seat.tenant === ""){
                     return(
                          <p className="rounded-full p-3 border-2 border-black "> <Plus /></p>
                     )
+                  }else {
+                    return(
+                         <p className="rounded-full p-3 border-2 border-black "></p>
+                    )
+                  }
                 })}
                
             </div>
@@ -96,71 +102,100 @@ const RoomCard = ({room, roomType}: RoomCardProps ) => {
             {/* how many available */}
             <p>{room.booking.length} available</p>
 
-            {/* Booking card */}
-
-            
-            <div>
-                <form className="flex flex-col gap-4 text-center border-5 border-black w-1/2 m-auto">
-
-                    {/* Seat Number */}
-                    <div className="flex flex-row gap-5 justify-center">
-                     
-                      <label htmlFor="seatNumber">Seat Number</label>
-                      <select id="seatNumber" name="seatNumber" onChange={(e) => setSeatNumber(Number(e.target.value))}>
-                          {room.booking.map((seat) => <option value={seat.seatIndex}>{seat.seatIndex}</option>)}
-                      </select>
-
-                    </div>
-                    
-                    {/* lease start month */}
-                    <div>
-                      <input type="month" name="" id="" value={startMonth} onChange={(e) => setStartMonth(e.target.value)} min={"2026-09"} />
-                    </div>
-
-                    {/* Duration */}
-
-                    <div>
-                        <label htmlFor="duration">Duration</label>
-                        <select id="duration" name="duration" onChange={(e) => setDuration(Number(e.target.value))}>
-                            <option value={3}>3 Months</option>
-                            <option value={6}>6 Months</option>
-                        </select>
-                    </div>
-
-
-                    <div>
-                      <h1>Total: {duration * Number(roomType.pricePerMonth)}</h1>
-                    </div>
-
-
-                    <Button type="button" onClick={() => book()}>Book Room</Button>
-                  
-                </form>
-            </div>
+           
             
         </div>
 
-        <Button className="relative left-130" hidden={showBookingView} onClick={() => bookingView()}>Book this seat</Button>
+        <Button className="relative left-130" hidden={showBookingView} onClick={() => {
+          setShowBookingVIew(!showBookingView)
+          bookingView()
+          
+          }}>Book this seat</Button>
 
+       </div>
 
-    
+       
         
 
-    
   
 
 
     </div>
-        
-       
 
-        
-       
-
-
-
-        
     </Card>
+
+    {showBookingView ? 
+    <div className="absolute w-screen h-screen bg-black/50 z-1"></div>
+    : null  
+  }
+
+    {showBookingView? <Card className="bg-white w-110 h-80 z-2 m-auto relative too">
+       {/* Booking card */}
+
+       <CardHeader>
+        <CardTitle className="text-lg font-bold">Confirm Booking</CardTitle>
+        <CardDescription>You are about to book a seat in room at location </CardDescription>
+       </CardHeader>
+
+       <CardContent>
+
+        <form className="absolute flex flex-col gap-4 text-center border-black w-100 m-auto z-2">
+          
+          <div className="flex flex-row justify-between text-left">
+
+              {/* label */}
+            <div className="flex flex-col gap-4">
+              {/* Seat Number */}
+              <label htmlFor="seatNumber">Seat Number</label>
+
+              {/* Start Month */}
+              <label htmlFor="duration">Start month</label>
+
+              {/* Duration */}
+              <label htmlFor="duration">Duration</label>
+
+              {/* Total */}
+              <h1>Total</h1>
+            </div>
+
+              {/* input */}
+            <div className="flex flex-col gap-4">
+              {/* Seat Number*/}
+              <select id="seatNumber" name="seatNumber" onChange={(e) => setSeatNumber(Number(e.target.value))}>
+                            {room.booking.map((seat) => <option value={seat.seatIndex}>{seat.seatIndex}</option>)}
+              </select>
+
+              {/* Start Month */}
+              <input type="month" name="" id="duration" value={startMonth} onChange={(e) => setStartMonth(e.target.value)} min={"2026-09"} />
+
+              {/* Duration */}
+              <select id="duration" name="duration" onChange={(e) => setDuration(Number(e.target.value))}>
+                            <option value={3}>3 Months</option>
+                            <option value={6}>6 Months</option>
+              </select>
+
+              {/* Total  */}
+              <h1>{duration * Number(roomType.pricePerMonth)}</h1>
+
+            </div>
+
+
+          </div>
+          
+          <div className="flex flex-row gap-15">
+            <Button type="button" className="w-40 h-11" onClick={() => book()}>Book Room</Button>
+            <Button type="button" variant={"outline"} className="w-40 h-11 border-black" onClick={() => setShowBookingVIew(!showBookingView)}>Cancel</Button>
+          </div>
+                  
+        </form>
+
+       </CardContent>
+
+      </Card>
+            
+     : null}
+
+
 
     {/* {showBookingView ? <BookRoom {...room} /> : null} */}
     </>

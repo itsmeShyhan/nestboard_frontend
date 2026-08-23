@@ -24,33 +24,6 @@ const RoomDetails = () => {
     const queryClient = useQueryClient()
     queryClient.invalidateQueries({queryKey: ["room-list"]})
 
-  //   const { mutate: book, isPending} = useMutation({
-    
-  //     mutationFn: () => {
-  //     const room = rooms?.find((r) => r.isAvailable)
-  //     if (!room){
-  //       throw new Error("No available room")
-  //     }
-
-  //     console.log("done room check up")
-      
-  //     return createBooking({
-  //       roomId: room.id,
-  //       seatNumber: 2,
-  //       startMonth: "2026-08",
-  //       durationMonths: 3
-  //     })
-  //   },
-  //   onSuccess: () => {
-  //     console.log("Booked. Check My Bookings")
-
-  //     queryClient.invalidateQueries({queryKey: ["my-bookings"]})
-  //   },
-  //   onError: () => {
-  //   }
-  // })
-    console.log(id)
-
     
 
     
