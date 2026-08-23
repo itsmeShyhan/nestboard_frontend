@@ -24,7 +24,7 @@ import { useNavigate, useParams } from "react-router"
 
 const Payment = () => {
 
-    // const [timer, setTimer] = useState(10)
+    
 
     const [message, setMessage] = useState("")
 

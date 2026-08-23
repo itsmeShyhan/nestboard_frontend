@@ -1,4 +1,5 @@
 import { createBooking } from "@/api/bookings"
+import { useAuth } from "@/components/auth/AuthProvider"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -17,6 +18,8 @@ type RoomCardProps = {
 
 const RoomCard = ({room, roomType}: RoomCardProps ) => {
 
+  const { isSignedIn } = useAuth()
+
   const navigation = useNavigate()
 
   // const [available, setAvailable] = useState("")
@@ -26,9 +29,6 @@ const RoomCard = ({room, roomType}: RoomCardProps ) => {
   const [duration, setDuration] = useState(3)
   const [startMonth, setStartMonth] = useState("")
   const [seatNumber, setSeatNumber] = useState(1)
-
-
-
 
   
   
@@ -55,13 +55,15 @@ const RoomCard = ({room, roomType}: RoomCardProps ) => {
     onSuccess: (data) => {
       console.log("Booked. Check My Bookings")
 
+      queryClient.invalidateQueries({queryKey: ["my-bookings"]})
+      queryClient.invalidateQueries({queryKey: ["room-list"]})
+
       
       navigation(`/payment/${data.id}`)
 
       
 
 
-      queryClient.invalidateQueries({queryKey: ["my-bookings"]})
     },
     onError: () => {
       console.log("Booking failed.")
@@ -73,6 +75,8 @@ const RoomCard = ({room, roomType}: RoomCardProps ) => {
   return (
 
     <>
+
+    {/* Room Card */}
     <Card className=" relative top-40 w-5/6 m-auto pl-6 shadow-lg">
 
     <div className="">
@@ -86,13 +90,14 @@ const RoomCard = ({room, roomType}: RoomCardProps ) => {
              {/* available room seats */}
             <div className="flex flex-row gap-12 h-lg">
                 {room.booking.map((seat) => {
+                  console.log(seat.tenant === "")
                   if (seat.tenant === ""){
                     return(
                          <p className="rounded-full p-3 border-2 border-black "> <Plus /></p>
                     )
                   }else {
                     return(
-                         <p className="rounded-full p-3 border-2 border-black "></p>
+                         <p className="rounded-full p-3 border-2 bg-orange-100 p-6"></p>
                     )
                   }
                 })}
@@ -107,13 +112,18 @@ const RoomCard = ({room, roomType}: RoomCardProps ) => {
         </div>
 
         <Button className="relative left-130" hidden={showBookingView} onClick={() => {
+        if (!isSignedIn) {
+        navigation("/sign-in")
+      }else{
           setShowBookingVIew(!showBookingView)
           bookingView()
+      }
           
           }}>Book this seat</Button>
 
        </div>
 
+       
        
         
 
@@ -124,12 +134,15 @@ const RoomCard = ({room, roomType}: RoomCardProps ) => {
 
     </Card>
 
+    {/* Background black */}
     {showBookingView ? 
     <div className="absolute w-screen h-screen bg-black/50 z-1"></div>
     : null  
   }
 
-    {showBookingView? <Card className="bg-white w-110 h-80 z-2 m-auto relative too">
+    {/* Confirm Booking Card */}
+
+    {showBookingView? <Card className="bg-white w-110 h-80 z-2 m-auto absolute mt-50 ml-50">
        {/* Booking card */}
 
        <CardHeader>
@@ -196,8 +209,6 @@ const RoomCard = ({room, roomType}: RoomCardProps ) => {
      : null}
 
 
-
-    {/* {showBookingView ? <BookRoom {...room} /> : null} */}
     </>
   )
 }
