@@ -15,8 +15,11 @@ export function RoomTypeCard({
   seatsTotal,
   seatsFree,
   hasAC,
+  pricePerMonth,
   rooms
 }: RoomType) {
+
+  console.log(pricePerMonth)
   const queryClient = useQueryClient()
   const [message, setMessage] = useState<string | null>(null)
   const navigate = useNavigate()

@@ -3,16 +3,21 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 
 // import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
-import type { Room } from "@/types/property"
+import type { Room, RoomType } from "@/types/property"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { Plus } from "lucide-react"
 import { useState } from "react"
 // import BookRoom from "./BookRoom"
 
-const RoomCard = (room: Room) => {
-  console.log(room.booking)
+type RoomCardProps = {
+  roomType: RoomType
+  room: Room
+}
 
-  const [available, setAvailable] = useState("")
+const RoomCard = ({room, roomType}: RoomCardProps ) => {
+  // console.log(room.booking)
+
+  // const [available, setAvailable] = useState("")
   const [showBookingView, setShowBookingVIew] = useState(false)
 
   // Details required for booking
@@ -20,29 +25,15 @@ const RoomCard = (room: Room) => {
   const [startMonth, setStartMonth] = useState("")
   const [seatNumber, setSeatNumber] = useState(1)
 
-  // let duration = 0
-  // letstartMonth = ""
-  // const [seatNumber, setSeatNumber] = useState(0)
 
   
   
   const queryClient = useQueryClient()
-  console.log(available)
-  console.log(setAvailable)
+
 
   function bookingView() {
     setShowBookingVIew(!showBookingView)
   }
-
-  // function dummyHandler() {
-  //   console.log("inside dummyhanlder")
-
-  //   console.log(seatNumber)
-  //   console.log(startMonth)
-  //   console.log(duration)
-  //   console.log(room.roomId)
-
-  // }
 
   const { mutate: book} = useMutation({
     
@@ -81,6 +72,7 @@ const RoomCard = (room: Room) => {
         <h1 className="text-lg font-bold mb-4">{room.roomName}</h1>
 
         <div className="flex flex-col gap-10">
+
              {/* available room seats */}
             <div className="flex flex-row gap-12 h-lg">
                 {room.booking.map(() => {
@@ -92,17 +84,12 @@ const RoomCard = (room: Room) => {
                
             </div>
 
-            {/* name of booked people
-            <div className="flex flex-col gap-4">
-                <p>Amesh Perera - Software Engineer, 26</p>
-                <p>Nimal Silva - Product Designer, 24</p>
-                <p>Kasun Fernando - Data Analyst, 28</p>
-            </div> */}
-
             {/* how many available */}
             <p>{room.booking.length} available</p>
 
             {/* Booking card */}
+
+            
             <div>
                 <form className="flex flex-col gap-4 text-center border-5 border-black w-1/2 m-auto">
 
@@ -129,6 +116,11 @@ const RoomCard = (room: Room) => {
                             <option value={3}>3 Months</option>
                             <option value={6}>6 Months</option>
                         </select>
+                    </div>
+
+
+                    <div>
+                      <h1>Total: {duration * Number(roomType.pricePerMonth)}</h1>
                     </div>
 
 

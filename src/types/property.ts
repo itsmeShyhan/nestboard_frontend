@@ -17,6 +17,7 @@ export type RoomType = {
   seatsFree: number
   hasAC: boolean
   rooms: Room[]
+  pricePerMonth: string
 }
 
 export type PropertyDetail = {

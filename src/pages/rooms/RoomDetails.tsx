@@ -15,7 +15,7 @@ const RoomDetails = () => {
       queryFn: () => fetchRoomType(id, roomTypeId)
     })
 
-    console.log(roomType)
+  
 
     
 
@@ -60,7 +60,7 @@ const RoomDetails = () => {
     <div className="flex flex-col gap-20">
     {roomType?.rooms.map((room) => {
       return (
-          <RoomCard {...room} {...roomType} />
+          <RoomCard room={room} roomType={roomType} />
       )
     })}
     </div>
