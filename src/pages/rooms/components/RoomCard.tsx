@@ -111,15 +111,18 @@ const RoomCard = ({room, roomType}: RoomCardProps ) => {
             
         </div>
 
-        <Button className="relative left-130" hidden={showBookingView} onClick={() => {
-        if (!isSignedIn) {
-        navigation("/sign-in")
-      }else{
-          setShowBookingVIew(!showBookingView)
-          bookingView()
-      }
+        <div className="w-1/1 flex flex-row justify-end pr-10">
+        <Button className="" hidden={showBookingView} onClick={() => {
+          if (!isSignedIn) {
+          navigation("/sign-in")
+          }else{
+            setShowBookingVIew(!showBookingView)
+            bookingView()
+          }
           
           }}>Book this seat</Button>
+
+          </div>
 
        </div>
 
