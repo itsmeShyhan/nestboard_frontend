@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/select"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { useState } from "react"
-import { useParams } from "react-router"
+import { useNavigate, useParams } from "react-router"
 
 const Payment = () => {
 
@@ -29,11 +29,10 @@ const Payment = () => {
     const [message, setMessage] = useState("")
 
 
-    // useEffect(() => {
-
-    // }, [])
     const {bookingId} = useParams<{bookingId: string}>()
     const queryClient = useQueryClient()
+
+    const navigate = useNavigate()
     
     
     const { mutate: confirmPayment, isPending, isSuccess} = useMutation({
@@ -50,6 +49,9 @@ const Payment = () => {
       console.log(data)
       queryClient.invalidateQueries({queryKey: ["my-bookings"]})
 
+      setTimeout(() => {
+        navigate("/dashboard")
+      }, 2000)
 
       
     },
@@ -61,6 +63,10 @@ const Payment = () => {
       }else if(data.message.includes("422")){
          setMessage("Booking not found, please try again with a valid booking.")
       }
+
+      setTimeout(() => {
+        navigate("/")
+      }, 2000)
 
     }
   })
