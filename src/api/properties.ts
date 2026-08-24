@@ -11,6 +11,6 @@ export async function fetchPropertyDetail(id: string): Promise<PropertyDetail> {
   return await apiFetch<PropertyDetail>(`/properties/${id}`)
 }
 
-export async function fetchRoomType(id: string | undefined, roomTypeId: string | undefined): Promise<RoomType> {
-  return await apiFetch<RoomType>(`/properties/${id}/room-types/${roomTypeId}`)
+export async function fetchRoomType(id: string | undefined, roomTypeId: string | undefined, startMonth?: string | null, durationMonths?: string | null): Promise<RoomType> {
+  return await apiFetch<RoomType>(`/properties/${id}/room-types/${roomTypeId}?startMonth=${startMonth}&durationMonths=${durationMonths}`)
 }

@@ -1,26 +1,11 @@
-// import { useUser } from "@clerk/react"
-// import { fetchMyBookings } from "@/api/bookings"
-// import { useAuth } from "@/components/auth/AuthProvider"
-// import { useQuery } from "@tanstack/react-query"
 import UserDescription from "./Components/UserDescription"
 import UserDetails from "./Components/UserDetails"
-// import { useAuth } from "@/components/auth/AuthProvider"
-// import UserDescription from "./Components/UserDescription"
-// import UserDetails from "./Components/UserDetails"
-// import { FileExclamationPoint } from "lucide-react"
+
 
 export function Dashboard() {
-  // const {isSignedIn} = useAuth()
 
   return (
-    // <div className="min-h-screen bg-gray-50 px-6 pt-28">
-    //   <div className="mx-auto max-w-3xl">
-    //     <h1 className="text-3xl font-semibold text-gray-900">
-    //       Welcome, {user?.displayName || "User"}!
-    //     </h1>
-    //     <MyBookings />
-    //   </div>
-    // </div>
+
 
     
     <>
@@ -30,10 +15,6 @@ export function Dashboard() {
       <UserDescription />
       <UserDetails />
     </div>
-
-    {/* <BackendAuthGate>
-      <MyBookings />
-    </BackendAuthGate> */}
     
     
     </>

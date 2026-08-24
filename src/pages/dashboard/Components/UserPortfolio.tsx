@@ -1,12 +1,13 @@
 import BookingInfo from './BookingInfo'
 import FavoritesInfo from './FavoritesInfo'
 
+
 const UserPortfolio = () => {
   return (
     <>
     <div className='w-[70dvw]'>
 
-      <BookingInfo />
+      <BookingInfo/>
       <FavoritesInfo />
     </div>
     

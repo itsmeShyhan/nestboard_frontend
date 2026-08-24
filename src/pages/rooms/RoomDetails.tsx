@@ -10,6 +10,7 @@ const RoomDetails = () => {
     const { roomTypeId } = useParams<{ roomTypeId: string }>()
 
 
+
     const {data: roomType} = useQuery({
       queryKey: ["room-list"],
       queryFn: () => fetchRoomType(id, roomTypeId)
@@ -17,7 +18,7 @@ const RoomDetails = () => {
 
   
 
-    
+    console.log(roomType)
 
 
 

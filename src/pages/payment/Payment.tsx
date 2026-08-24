@@ -70,7 +70,7 @@ const Payment = () => {
   })
 
     const months = [
-  { label: "MM", value: null },
+  { label: "MM", value: "00" },
   { label: "01", value: "01" },
   { label: "02", value: "02" },
   { label: "03", value: "03" },
@@ -86,7 +86,7 @@ const Payment = () => {
 ]
 
 const years = [
-  { label: "YYYY", value: null },
+  { label: "YYYY", value: "0000" },
   { label: "2024", value: "2024" },
   { label: "2025", value: "2025" },
   { label: "2026", value: "2026" },
@@ -139,7 +139,7 @@ const years = [
                     Month
                   </FieldLabel>
 
-                  <Select items={months}>
+                  <Select>
                     <SelectTrigger id="checkout-exp-month-ts6">
                       <SelectValue />
                     </SelectTrigger>
@@ -164,7 +164,7 @@ const years = [
                   <FieldLabel htmlFor="checkout-7j9-exp-year-f59">
                     Year
                   </FieldLabel>
-                  <Select items={years}>
+                  <Select>
                     <SelectTrigger id="checkout-7j9-exp-year-f59">
                       <SelectValue />
                     </SelectTrigger>

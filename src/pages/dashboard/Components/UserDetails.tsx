@@ -1,8 +1,9 @@
-import React from 'react'
 import UserPortfolio from './UserPortfolio'
 import UserPreferences from './UserPreferences'
 
+
 const UserDetails = () => {
+
   return (
     <>
     <div className='flex flex-row gap-5'>
@@ -12,5 +13,6 @@ const UserDetails = () => {
     </>
   )
 }
+
 
 export default UserDetails
