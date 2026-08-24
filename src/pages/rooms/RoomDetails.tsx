@@ -25,7 +25,8 @@ const RoomDetails = () => {
 
   return (
     <>
-    <div className=" flex flex-row gap-10 m-auto rounded-full border-3 border-primary w-max shadow-lg absolute top-20 left-130 p-5 text-center z-2">
+    <div className="w-full flex flex-row justify-center relative top-24">
+       <div className="flex flex-row gap-10 m-auto rounded-full border-3 border-primary w-max p-5 absolute text-center z-2">
 
       <div className="flex flex-col text-center justify-between">
         {/* Start Month */}
@@ -64,10 +65,12 @@ const RoomDetails = () => {
         <h1 className="font-bold">Price</h1>
         <p>LKR {Number(durationMonths) * Number(roomType?.pricePerMonth)}</p>
       </div>
+      </div>
     </div>
+   
 
 
-    <div className="flex flex-col gap-20 z-1">
+    <div className="flex flex-col gap-20 z-1 ">
     {roomType?.rooms.map((room) => {
       return (
           <RoomCard room={room} roomType={roomType} duration={durationMonths} startMonth={startMonth}/>

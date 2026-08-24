@@ -31,6 +31,7 @@ const RoomCard = ({room, roomType, duration, startMonth}: RoomCardProps ) => {
   // const [startMonth, setStartMonth] = useState("")
   // const [seatNumber, setSeatNumber] = useState(1)
   const [seatNumber, setSeatNumber] = useState(1)
+  const [selected, setSelected] = useState(false)
 
 
 
@@ -99,12 +100,13 @@ const RoomCard = ({room, roomType, duration, startMonth}: RoomCardProps ) => {
 
              {/* available room seats */}
             <div className="flex flex-row gap-12 h-lg">
-                {room.booking.map((seat, seatNumber) => {
+                {room.booking.map((seat, number) => {
                   console.log(seat.tenant === "")
                   if (seat.tenant === ""){
                     return(
-                         <button className="rounded-full p-3 border-2 border-black cursor-pointer" onClick={() => {
-                         setSeatNumber(seatNumber)
+                         <button className={`rounded-full p-3 border-2 border-black cursor-pointer ${selected && seatNumber === number+1? "bg-primary" : null}`} onClick={() => {
+                         setSeatNumber(number+1)
+                         setSelected(!selected)
                          }}> <Plus /></button>
                     )
                   }else {
@@ -124,7 +126,7 @@ const RoomCard = ({room, roomType, duration, startMonth}: RoomCardProps ) => {
         </div>
 
         <div className="w-1/1 flex flex-row justify-end pr-10">
-        <Button className="" hidden={showBookingView} onClick={() => {
+        <Button className="" disabled={!selected} hidden={showBookingView} onClick={() => {
           if (!isSignedIn) {
           navigation("/sign-in")
           }else{
@@ -157,7 +159,7 @@ const RoomCard = ({room, roomType, duration, startMonth}: RoomCardProps ) => {
 
     {/* Confirm Booking Card */}
 
-    {showBookingView? <Card className="bg-white w-110 h-80 z-2 m-auto absolute mt-50 ml-100 p-2">
+    {showBookingView? <Card className="bg-white w-110 h-100 z-2 absolute left-140 top-50">
        {/* Booking card */}
 
        <CardHeader>
@@ -167,7 +169,7 @@ const RoomCard = ({room, roomType, duration, startMonth}: RoomCardProps ) => {
 
        <CardContent>
 
-        <form className="absolute flex flex-col gap-4 text-center border-black w-100 m-auto z-2">
+        <form className="absolute flex flex-col gap-4 text-center border-black w-max m-auto z-2">
           
           <div className="flex flex-row justify-between text-left">
 
@@ -187,6 +189,9 @@ const RoomCard = ({room, roomType, duration, startMonth}: RoomCardProps ) => {
 
               {/* Seat Number */}
               <h1>Start Month</h1>
+
+               {/* Seat Number */}
+              <h1>Seat Number</h1>
             </div>
 
               {/* input */}
@@ -211,13 +216,16 @@ const RoomCard = ({room, roomType, duration, startMonth}: RoomCardProps ) => {
               {/* Seat Number */}
               <h1>{startMonth}</h1>
 
+              {/* Seat Number */}
+              <h1>{seatNumber}</h1>
+
             </div>
 
 
           </div>
           
           <div className="flex flex-row gap-15">
-            <Button type="button" className="w-40 h-11" onClick={() => book}>Book Room</Button>
+            <Button type="button" className="w-40 h-11" onClick={() => book()}>Book Room</Button>
             <Button type="button" variant={"outline"} className="w-40 h-11 border-black" onClick={() => setShowBookingVIew(!showBookingView)}>Cancel</Button>
           </div>
                   
