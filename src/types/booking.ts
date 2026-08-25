@@ -7,7 +7,11 @@ export type BookingDTO = {
     leaseEnd: string
     durationMonths: number
     totalAmount: string
-    property: {id: string; title: string; city: string}
-    roomType: {id: string; name: string; price:string}
-    room: {id: string; roomLabel: string}
+    
+    
+    room: {id: string; roomLabel: string
+        roomType: {id: string; name: string; price:string
+            property: {id: string; title: string; city: string}
+        }
+    }
 }
