@@ -1,4 +1,3 @@
-import React from 'react'
 import UserPortfolio from './UserPortfolio'
 import UserPreferences from './UserPreferences'
 

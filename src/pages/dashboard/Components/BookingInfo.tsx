@@ -1,19 +1,12 @@
 import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
-// import { properties } from '@/data/properties'
-// import { useProperties } from '@/hooks/useProperties'
 import { House } from 'lucide-react'
 import BookingCard from './Common/BookingCard'
-// import { useProperties } from '@/hooks/useProperties'
 import { useQuery } from '@tanstack/react-query'
 import { fetchMyBookings } from '@/api/bookings'
-// import FavoritesCard from './FavoritesInfo'
 
 const BookingInfo = () => {
-    const { data: bookings, isLoading, isError} = useQuery({queryKey: ["my-bookings"], queryFn: fetchMyBookings})
-    // console.log(properties)
-    // console.log(isLoading)
-    // console.log(isError)
+    const { data: bookings} = useQuery({queryKey: ["my-bookings"], queryFn: fetchMyBookings})
 
     
   return (
