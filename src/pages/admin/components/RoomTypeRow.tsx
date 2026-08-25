@@ -49,12 +49,12 @@ export function RoomTypeRow({
       <div className="mt-2 flex flex-wrap gap-2">
         {roomType.rooms?.map((room) => (
           <span
-            key={room.id}
+            key={room.roomId}
             className="flex items-center gap-1 rounded-full bg-white px-2 py-1 text-xs ring-1 ring-gray-200"
           >
-            {room.label}
+            {room.roomName}
             <button
-              onClick={() => removeRoom(room.id)}
+              onClick={() => removeRoom(room.roomId)}
               className="text-gray-400 hover:text-red-600"
             >
               x
