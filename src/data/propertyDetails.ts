@@ -12,7 +12,7 @@ export const propertyDetails: PropertyDetail[] = [
     startingPrice: "LKR 18K",
     image:
       "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&h=500&fit=crop",
-    rooms: [
+    roomTypes: [
       {
         id: "r1",
         name: "Room A",
@@ -20,6 +20,7 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 2,
         seatsFree: 1,
         hasAC: true,
+        rooms:[]
       },
       {
         id: "r2",
@@ -28,6 +29,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 2,
         seatsFree: 1,
         hasAC: true,
+        rooms:[]
+
       },
       {
         id: "r3",
@@ -36,6 +39,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 3,
         seatsFree: 1,
         hasAC: false,
+        rooms:[]
+
       },
     ],
   },
@@ -50,7 +55,7 @@ export const propertyDetails: PropertyDetail[] = [
     startingPrice: "LKR 16K",
     image:
       "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1200&h=500&fit=crop",
-    rooms: [
+    roomTypes: [
       {
         id: "r1",
         name: "Room A",
@@ -58,6 +63,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 3,
         seatsFree: 2,
         hasAC: false,
+        rooms:[]
+
       },
       {
         id: "r2",
@@ -66,6 +73,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 4,
         seatsFree: 3,
         hasAC: false,
+        rooms:[]
+
       },
     ],
   },
@@ -80,7 +89,7 @@ export const propertyDetails: PropertyDetail[] = [
     startingPrice: "LKR 20K",
     image:
       "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200&h=500&fit=crop",
-    rooms: [
+    roomTypes: [
       {
         id: "r1",
         name: "Room A",
@@ -88,6 +97,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 2,
         seatsFree: 1,
         hasAC: true,
+        rooms:[]
+
       },
       {
         id: "r2",
@@ -96,6 +107,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 2,
         seatsFree: 1,
         hasAC: true,
+        rooms:[]
+
       },
       {
         id: "r3",
@@ -104,6 +117,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 3,
         seatsFree: 2,
         hasAC: true,
+        rooms:[]
+
       },
     ],
   },
@@ -118,7 +133,7 @@ export const propertyDetails: PropertyDetail[] = [
     startingPrice: "LKR 13K",
     image:
       "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1200&h=500&fit=crop",
-    rooms: [
+    roomTypes: [
       {
         id: "r1",
         name: "Room A",
@@ -126,6 +141,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 4,
         seatsFree: 2,
         hasAC: false,
+        rooms:[]
+
       },
       {
         id: "r2",
@@ -134,6 +151,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 4,
         seatsFree: 2,
         hasAC: false,
+        rooms:[]
+
       },
       {
         id: "r3",
@@ -142,6 +161,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 4,
         seatsFree: 2,
         hasAC: false,
+        rooms:[]
+
       },
     ],
   },
@@ -156,7 +177,7 @@ export const propertyDetails: PropertyDetail[] = [
     startingPrice: "LKR 23K",
     image:
       "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&h=500&fit=crop",
-    rooms: [
+    roomTypes: [
       {
         id: "r1",
         name: "Room A",
@@ -164,6 +185,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 2,
         seatsFree: 1,
         hasAC: true,
+        rooms:[]
+
       },
       {
         id: "r2",
@@ -172,6 +195,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 2,
         seatsFree: 1,
         hasAC: true,
+        rooms:[]
+
       },
       {
         id: "r3",
@@ -180,6 +205,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 3,
         seatsFree: 0,
         hasAC: true,
+        rooms:[]
+
       },
     ],
   },
@@ -194,7 +221,7 @@ export const propertyDetails: PropertyDetail[] = [
     startingPrice: "LKR 15K",
     image:
       "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&h=500&fit=crop",
-    rooms: [
+    roomTypes: [
       {
         id: "r1",
         name: "Room A",
@@ -202,6 +229,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 3,
         seatsFree: 1,
         hasAC: true,
+        rooms:[]
+
       },
       {
         id: "r2",
@@ -210,6 +239,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 3,
         seatsFree: 2,
         hasAC: false,
+        rooms:[]
+
       },
       {
         id: "r3",
@@ -218,6 +249,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 3,
         seatsFree: 1,
         hasAC: false,
+        rooms:[]
+
       },
     ],
   },
@@ -232,7 +265,7 @@ export const propertyDetails: PropertyDetail[] = [
     startingPrice: "LKR 32K",
     image:
       "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&h=500&fit=crop",
-    rooms: [
+    roomTypes: [
       {
         id: "r1",
         name: "Deluxe Room",
@@ -240,6 +273,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 2,
         seatsFree: 2,
         hasAC: true,
+        rooms:[]
+
       },
       {
         id: "r2",
@@ -248,6 +283,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 4,
         seatsFree: 3,
         hasAC: true,
+        rooms:[]
+
       },
       {
         id: "r3",
@@ -256,6 +293,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 4,
         seatsFree: 3,
         hasAC: true,
+        rooms:[]
+
       },
     ],
   },
@@ -270,7 +309,7 @@ export const propertyDetails: PropertyDetail[] = [
     startingPrice: "LKR 25K",
     image:
       "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=1200&h=500&fit=crop",
-    rooms: [
+    roomTypes: [
       {
         id: "r1",
         name: "Room A",
@@ -278,6 +317,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 4,
         seatsFree: 1,
         hasAC: true,
+        rooms:[]
+
       },
       {
         id: "r2",
@@ -286,6 +327,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 4,
         seatsFree: 2,
         hasAC: true,
+        rooms:[]
+
       },
       {
         id: "r3",
@@ -294,6 +337,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 4,
         seatsFree: 1,
         hasAC: false,
+        rooms:[]
+
       },
     ],
   },
@@ -308,7 +353,7 @@ export const propertyDetails: PropertyDetail[] = [
     startingPrice: "LKR 26K",
     image:
       "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&h=500&fit=crop",
-    rooms: [
+    roomTypes: [
       {
         id: "r1",
         name: "Room A",
@@ -316,6 +361,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 2,
         seatsFree: 1,
         hasAC: true,
+        rooms:[]
+
       },
       {
         id: "r2",
@@ -324,6 +371,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 2,
         seatsFree: 2,
         hasAC: true,
+        rooms:[]
+
       },
       {
         id: "r3",
@@ -332,6 +381,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 3,
         seatsFree: 2,
         hasAC: false,
+        rooms:[]
+
       },
     ],
   },
@@ -346,7 +397,7 @@ export const propertyDetails: PropertyDetail[] = [
     startingPrice: "LKR 12K",
     image:
       "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&h=500&fit=crop",
-    rooms: [
+    roomTypes: [
       {
         id: "r1",
         name: "Room A",
@@ -354,6 +405,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 4,
         seatsFree: 3,
         hasAC: false,
+        rooms:[]
+
       },
       {
         id: "r2",
@@ -362,6 +415,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 4,
         seatsFree: 2,
         hasAC: false,
+        rooms:[]
+
       },
       {
         id: "r3",
@@ -370,6 +425,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 4,
         seatsFree: 2,
         hasAC: false,
+        rooms:[]
+
       },
     ],
   },
@@ -384,7 +441,7 @@ export const propertyDetails: PropertyDetail[] = [
     startingPrice: "LKR 38K",
     image:
       "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=500&fit=crop",
-    rooms: [
+    roomTypes: [
       {
         id: "r1",
         name: "Junior Suite",
@@ -392,6 +449,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 2,
         seatsFree: 1,
         hasAC: true,
+        rooms:[]
+
       },
       {
         id: "r2",
@@ -400,6 +459,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 3,
         seatsFree: 2,
         hasAC: true,
+        rooms:[]
+
       },
       {
         id: "r3",
@@ -408,6 +469,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 4,
         seatsFree: 3,
         hasAC: true,
+        rooms:[]
+
       },
     ],
   },
@@ -422,7 +485,7 @@ export const propertyDetails: PropertyDetail[] = [
     startingPrice: "LKR 30K",
     image:
       "https://images.unsplash.com/photo-1504615755583-2916b52192a3?w=1200&h=500&fit=crop",
-    rooms: [
+    roomTypes: [
       {
         id: "r1",
         name: "Room A",
@@ -430,6 +493,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 3,
         seatsFree: 1,
         hasAC: true,
+        rooms:[]
+
       },
       {
         id: "r2",
@@ -438,6 +503,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 3,
         seatsFree: 1,
         hasAC: true,
+        rooms:[]
+
       },
       {
         id: "r3",
@@ -446,6 +513,8 @@ export const propertyDetails: PropertyDetail[] = [
         seatsTotal: 3,
         seatsFree: 1,
         hasAC: false,
+        rooms:[]
+
       },
     ],
   },

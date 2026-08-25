@@ -1,12 +1,12 @@
 import type { Property, PropertyDetail } from "@/types/property"
+// import { API_URL } from "./config"
+import { apiFetch } from "./client";
+
+
 
 export async function fetchProperties(): Promise<Property[]> {
-  const res = await fetch("http://localhost:3001/api/properties")
-  if (!res.ok) throw new Error("Failed to fetch properties")
-  return res.json()
+  return (await apiFetch<{ data: Property[] }>(`/properties`)).data
 }
 export async function fetchPropertyDetail(id: string): Promise<PropertyDetail> {
-  const res = await fetch(`http://localhost:3001/api/properties/${id}`)
-  if (!res.ok) throw new Error(`Failed to fetch property: ${id}`)
-  return res.json()
+  return await apiFetch<PropertyDetail>(`/properties/${id}`)
 }

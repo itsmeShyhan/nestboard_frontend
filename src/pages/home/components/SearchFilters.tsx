@@ -44,6 +44,7 @@ export function SearchFilters() {
   const setSearchQuery = useUIStore((state) => state.setSearchQuery)
   const activeCategory = useUIStore((state) => state.activeCategory)
   const setActiveCategory = useUIStore((state) => state.setActiveCategory)
+  console.log(categories)
   return (
     <div className="relative z-20 -mt-7 px-4">
       <div className="rounded-2xl bg-white p-8 shadow-xl">

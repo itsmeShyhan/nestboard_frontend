@@ -1,9 +1,10 @@
-import { useUser } from "@clerk/react"
 import { useQueries } from "@tanstack/react-query"
 import { Building2, House, TrendingUp } from "lucide-react"
 import { type ReactNode, useMemo } from "react"
 import { fetchPropertyDetail } from "@/api/properties"
 import { useProperties } from "@/hooks/useProperties"
+import { useAuth } from "@/components/auth/AuthProvider"
+import AdminPropertyManager from "./components/AdminPropertyManager"
 
 function formatTodayLong(): string {
   return new Intl.DateTimeFormat("en-US", {
@@ -60,12 +61,9 @@ function StatCard({
 }
 
 export function AdminDashboard() {
-  const { user } = useUser()
+  const { user } = useAuth()
   const displayName =
-    user?.firstName ??
-    user?.fullName ??
-    user?.username ??
-    user?.primaryEmailAddress?.emailAddress ??
+    user?.displayName ??
     "there"
 
   const {
@@ -99,7 +97,7 @@ export function AdminDashboard() {
       : roomsLoading
         ? null
         : detailQueries.reduce(
-            (sum, q) => sum + (q.data?.rooms?.length ?? 0),
+            (sum, q) => sum + (q.data?.roomTypes?.length ?? 0),
             0,
           )
 
@@ -116,7 +114,10 @@ export function AdminDashboard() {
             Could not load property stats. Check that the API is running.
           </p>
         ) : (
-          <div className="mt-10 grid gap-6 sm:grid-cols-2">
+
+          <>
+
+           <div className="mt-10 grid gap-6 sm:grid-cols-2">
             <StatCard
               icon={<Building2 className="h-5 w-5 text-teal-600" />}
               iconWrapClassName="bg-teal-100"
@@ -136,7 +137,17 @@ export function AdminDashboard() {
               loading={propertiesLoading || roomsLoading}
             />
           </div>
+
+          <div className="mt-10">
+            <AdminPropertyManager></AdminPropertyManager>
+          </div>
+          
+          </>
+         
+          
         )}
+
+
       </div>
     </div>
   )
