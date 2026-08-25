@@ -11,7 +11,6 @@ const Favorites = () => {
         queryFn: fetchFavorites
 
     })
-
    
 
 

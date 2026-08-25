@@ -24,3 +24,15 @@ export async function createBooking(input: CreateBookingInput){
         body: JSON.stringify(input)  
     })
 }
+
+// type ConfirmBookingInput = {
+//     bookingId: string
+// }
+
+
+export async function confirmBooking(bookingId: string){
+    return apiFetch<BookingDTO>(`/bookings/${bookingId}/confirm`, {
+        method: "POST",
+        auth: true 
+    })
+}

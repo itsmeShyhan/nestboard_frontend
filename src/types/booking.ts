@@ -1,6 +1,6 @@
 export type BookingDTO = {
     id: string
-    status: "PENDING" | "CONFIRMED" | "CANCELLED" | "EXPIRED"
+    bookingStatus: "PENDING" | "CONFIRMED" | "CANCELLED" | "EXPIRED"
     paymentStatus: "PENDING" | "PAID" | "FAILED"
     seatNumber: number
     leaseStart: string
@@ -14,4 +14,9 @@ export type BookingDTO = {
             property: {id: string; title: string; city: string}
         }
     }
+}
+
+
+export type MyBookingProps = {
+  bookings: BookingDTO[]
 }

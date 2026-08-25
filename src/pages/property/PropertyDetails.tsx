@@ -1,13 +1,15 @@
 import { useParams } from "react-router"
 import { PropertySection } from "./components/PropertySection"
 import { PropertyInfo } from "./components/PropertyInfo"
-import { RoomList } from "./components/RoomList"
+import { RoomTypeList } from "./components/RoomTypeList"
 import { usePropertyDetail } from "@/hooks/usePropertyDetail"
 
 export function PropertyDetails() {
   const { id } = useParams<{ id: string }>()
   // const property = propertyDetails.find((p) => p.id === id)
   const { data: property, isLoading, isError } = usePropertyDetail(id)
+
+  console.log(property)
 
   if (isLoading) {
     return (
@@ -45,7 +47,7 @@ export function PropertyDetails() {
         </div>
 
         <div className="mt-5">
-          <RoomList rooms={property.roomTypes} />
+          <RoomTypeList rooms={property.roomTypes} />
         </div>
       </div>
     </div>
