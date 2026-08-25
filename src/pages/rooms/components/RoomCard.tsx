@@ -2,21 +2,22 @@ import { createBooking } from "@/api/bookings"
 import { useAuth } from "@/components/auth/AuthProvider"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+// import { useLeaseStore } from "@/stores/leaseStore"
 
-// import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import type { Room, RoomType } from "@/types/property"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { Plus } from "lucide-react"
 import { useState } from "react"
 import { useNavigate } from "react-router"
-// import BookRoom from "./BookRoom"
 
 type RoomCardProps = {
   roomType: RoomType
   room: Room
+  duration: string
+  startMonth: string 
 }
 
-const RoomCard = ({room, roomType}: RoomCardProps ) => {
+const RoomCard = ({room, roomType, duration, startMonth}: RoomCardProps ) => {
 
   const { isSignedIn } = useAuth()
 
@@ -26,10 +27,18 @@ const RoomCard = ({room, roomType}: RoomCardProps ) => {
   const [showBookingView, setShowBookingVIew] = useState(false)
 
   // Details required for booking
-  const [duration, setDuration] = useState(3)
-  const [startMonth, setStartMonth] = useState("")
+  // const [duration, setDuration] = useState(3)
+  // const [startMonth, setStartMonth] = useState("")
+  // const [seatNumber, setSeatNumber] = useState(1)
   const [seatNumber, setSeatNumber] = useState(1)
+  const [selected, setSelected] = useState(false)
 
+
+
+  // const setStart = useLeaseStore((state) => state.setStartMonth)
+  // const setDurationMonth = useLeaseStore((state) => state.setDurationMonths)
+
+  console.log(roomType)
   
   
   const queryClient = useQueryClient()
@@ -38,6 +47,8 @@ const RoomCard = ({room, roomType}: RoomCardProps ) => {
   function bookingView() {
     setShowBookingVIew(!showBookingView)
   }
+  
+
 
   const { mutate: book} = useMutation({
     
@@ -49,7 +60,7 @@ const RoomCard = ({room, roomType}: RoomCardProps ) => {
         roomId: room.roomId,
         seatNumber: seatNumber,
         startMonth: startMonth,
-        durationMonths: duration
+        durationMonths: Number(duration)
       })
     },
     onSuccess: (data) => {
@@ -89,11 +100,14 @@ const RoomCard = ({room, roomType}: RoomCardProps ) => {
 
              {/* available room seats */}
             <div className="flex flex-row gap-12 h-lg">
-                {room.booking.map((seat) => {
+                {room.booking.map((seat, number) => {
                   console.log(seat.tenant === "")
                   if (seat.tenant === ""){
                     return(
-                         <p className="rounded-full p-3 border-2 border-black "> <Plus /></p>
+                         <button className={`rounded-full p-3 border-2 border-black cursor-pointer ${selected && seatNumber === number+1? "bg-primary" : null}`} onClick={() => {
+                         setSeatNumber(number+1)
+                         setSelected(!selected)
+                         }}> <Plus /></button>
                     )
                   }else {
                     return(
@@ -105,14 +119,14 @@ const RoomCard = ({room, roomType}: RoomCardProps ) => {
             </div>
 
             {/* how many available */}
-            <p>{room.booking.length} available</p>
+            <p>{room.booking.filter((r) => r.tenant === "" ).length} available</p>
 
            
             
         </div>
 
         <div className="w-1/1 flex flex-row justify-end pr-10">
-        <Button className="" hidden={showBookingView} onClick={() => {
+        <Button className="" disabled={!selected} hidden={showBookingView} onClick={() => {
           if (!isSignedIn) {
           navigation("/sign-in")
           }else{
@@ -145,53 +159,65 @@ const RoomCard = ({room, roomType}: RoomCardProps ) => {
 
     {/* Confirm Booking Card */}
 
-    {showBookingView? <Card className="bg-white w-110 h-80 z-2 m-auto absolute mt-50 ml-50">
+    {showBookingView? <Card className="bg-white w-110 h-100 z-2 absolute left-140 top-50">
        {/* Booking card */}
 
        <CardHeader>
         <CardTitle className="text-lg font-bold">Confirm Booking</CardTitle>
-        <CardDescription>You are about to book a seat in room at location </CardDescription>
+        <CardDescription>You are about to book a seat in {room.roomName} </CardDescription>
        </CardHeader>
 
        <CardContent>
 
-        <form className="absolute flex flex-col gap-4 text-center border-black w-100 m-auto z-2">
+        <form className="absolute flex flex-col gap-4 text-center border-black w-max m-auto z-2">
           
           <div className="flex flex-row justify-between text-left">
 
               {/* label */}
             <div className="flex flex-col gap-4">
               {/* Seat Number */}
-              <label htmlFor="seatNumber">Seat Number</label>
+              <h1>Room</h1>
 
-              {/* Start Month */}
-              <label htmlFor="duration">Start month</label>
+              {/* Seat Number */}
+              <h1>Room Type</h1>
 
-              {/* Duration */}
-              <label htmlFor="duration">Duration</label>
+              {/* Seat Number */}
+              <h1>Price</h1>
 
-              {/* Total */}
-              <h1>Total</h1>
+              {/* Seat Number */}
+              <h1>Duration</h1>
+
+              {/* Seat Number */}
+              <h1>Start Month</h1>
+
+               {/* Seat Number */}
+              <h1>Seat Number</h1>
             </div>
 
               {/* input */}
             <div className="flex flex-col gap-4">
               {/* Seat Number*/}
-              <select id="seatNumber" name="seatNumber" onChange={(e) => setSeatNumber(Number(e.target.value))}>
+              {/* <select id="seatNumber" name="seatNumber" onChange={(e) => setSeatNumber(Number(e.target.value))}>
                             {room.booking.map((seat) => <option value={seat.seatIndex}>{seat.seatIndex}</option>)}
-              </select>
+              </select> */}
 
-              {/* Start Month */}
-              <input type="month" name="" id="duration" value={startMonth} onChange={(e) => setStartMonth(e.target.value)} min={"2026-09"} />
+               {/* Seat Number */}
+              <h1>{room.roomName}</h1>
 
-              {/* Duration */}
-              <select id="duration" name="duration" onChange={(e) => setDuration(Number(e.target.value))}>
-                            <option value={3}>3 Months</option>
-                            <option value={6}>6 Months</option>
-              </select>
+              {/* Seat Number */}
+              <h1>{roomType.name}</h1>
 
-              {/* Total  */}
-              <h1>{duration * Number(roomType.pricePerMonth)}</h1>
+              {/* Seat Number */}
+              <h1>{roomType.pricePerMonth}/month</h1>
+
+              {/* Seat Number */}
+              <h1>{duration}</h1>
+
+              {/* Seat Number */}
+              <h1>{startMonth}</h1>
+
+              {/* Seat Number */}
+              <h1>{seatNumber}</h1>
 
             </div>
 

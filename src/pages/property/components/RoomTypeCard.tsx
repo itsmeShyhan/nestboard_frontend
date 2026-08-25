@@ -9,7 +9,7 @@ export function RoomTypeCard({
   id,
   name,
   price,
-  seatsTotal,
+  seatsCapacity,
   seatsFree,
   hasAC,
   pricePerMonth,
@@ -30,7 +30,7 @@ export function RoomTypeCard({
 
 
   const fillPercentage = Math.round(
-    ((seatsTotal - seatsFree) / seatsTotal) * 100
+    ((seatsCapacity - seatsFree) / seatsCapacity) * 100
   )
 
   return (

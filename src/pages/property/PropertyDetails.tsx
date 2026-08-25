@@ -32,17 +32,17 @@ export function PropertyDetails() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <PropertySection image={property.image} rating={property.rating} />
+      <PropertySection image={property.imageUrl} rating={property.rating} />
 
       <div className="px-4 pb-12">
         <div className="relative z-10 -mt-12">
           <PropertyInfo
             title={property.title}
-            address={property.address}
+            address={property.city}
             amenities={property.amenities}
-            seatsAvailable={property.seatsAvailable}
+            seatsAvailable={property.available_seats}
             minStay={property.minStay}
-            startingPrice={property.startingPrice}
+            startingPrice={property.cost}
           />
         </div>
 
