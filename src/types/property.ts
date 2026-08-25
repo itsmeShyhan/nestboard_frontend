@@ -13,7 +13,7 @@ export type RoomType = {
   id: string
   name: string
   price: string
-  seatsTotal: number
+  seatsCapacity: number
   seatsFree: number
   hasAC: boolean
   rooms: Room[]
@@ -23,14 +23,17 @@ export type RoomType = {
 export type PropertyDetail = {
   id: string
   title: string
-  address: string
   amenities: string[]
+  available_seats: number
+  city: string
+  cost: string
+  description: string
+  imageUrl: string
   rating: number
-  seatsAvailable: number
   minStay: string
   startingPrice: string
-  image: string
   roomTypes: RoomType[]
+
 }
 
 

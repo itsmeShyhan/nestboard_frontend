@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card"
 import { RoomTypeCard } from "./RoomTypeCard"
 import type { RoomType } from "@/types/property"
 
+
 type RoomTypeListProps = {
   rooms: RoomType[]
 }

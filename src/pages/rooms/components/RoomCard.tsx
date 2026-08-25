@@ -38,7 +38,7 @@ const RoomCard = ({room, roomType, duration, startMonth}: RoomCardProps ) => {
   // const setStart = useLeaseStore((state) => state.setStartMonth)
   // const setDurationMonth = useLeaseStore((state) => state.setDurationMonths)
 
-
+  console.log(roomType)
   
   
   const queryClient = useQueryClient()
